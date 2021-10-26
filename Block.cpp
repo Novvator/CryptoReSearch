@@ -1,17 +1,17 @@
 
-#include <Block.h>
+#include "Block.h"
 
 #include <sstream>
 
 namespace CryptoReSearch{
 
-    Block::Block(uint64_t index, std::string data, std::chrono::system_clock date, std::string previous_hash){
+    Block::Block(uint64_t index, std::string data, std::chrono::system_clock::time_point date, std::string previous_hash){
 
-        my_index = index;
-        my_data = data;
-        my_date = date;
-        my_previous_hash = previous_hash;
-
+            _index = index;
+            _data = data;
+            _date = date;
+            _previous_hash = previous_hash;
+            _hash = calculate_hash();
     }
 
 
@@ -23,12 +23,10 @@ namespace CryptoReSearch{
 
         {
             using namespace std::chrono;
-            
-            system_clock::time_point now_tp = system_clock::now();
-            now_tt = system_clock::to_time_t(now_tp);
+            now_tt = system_clock::to_time_t(_date);
         }
-        
-        output << my_index << ' ' << my_data << ' ' << ctime(&now_tt) << ' ' << my_previous_hash;
+
+        output << _index << ' ' << _data << ' ' << ctime(&now_tt) << ' ' << _previous_hash;
 
         return sha256(output.str());
     }
