@@ -5,7 +5,7 @@
 
 namespace CryptoReSearch{
 
-    Block::Block(uint64_t index, std::string data, std::chrono::system_clock::time_point date, std::string previous_hash){
+    Block::Block(uint64_t index, std::string data, std::chrono::system_clock::time_point date, std::string previous_hash = ""){
 
             _index = index;
             _data = data;
@@ -14,6 +14,13 @@ namespace CryptoReSearch{
             _hash = calculate_hash();
     }
 
+    std::string Block::get_hash(){
+        return _hash;
+    }
+
+    std::string& Block::get_previous_hash(){
+        return _previous_hash;
+    }
 
     std::string Block::calculate_hash(){
 

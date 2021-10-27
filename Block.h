@@ -19,9 +19,11 @@ namespace CryptoReSearch{
         std::string                             _previous_hash;   // Hash value of the previous block
 
     public:
-        Block(uint64_t index, std::string data, std::chrono::system_clock::time_point date, std::string previous_hash);
+        Block(uint64_t index, std::string data, std::chrono::system_clock::time_point date, std::string previous_hash = "");
 
         std::string calculate_hash();
+        std::string& get_previous_hash();
+        std::string get_hash();
     };
 }
 
