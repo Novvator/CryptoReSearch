@@ -23,7 +23,8 @@ namespace CryptoReSearch{
 
         std::string calculate_hash();
         std::string& get_previous_hash();
-        std::string get_hash() const;
+        std::string& get_hash();
+        std::string get_date() const;
     };
 }
 

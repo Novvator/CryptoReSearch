@@ -1,5 +1,6 @@
 #include "Blockchain.h"
 #include <chrono>
+#include <iostream>
 
 namespace CryptoReSearch{
 
@@ -27,6 +28,10 @@ namespace CryptoReSearch{
 
             Block curr_block = _chain[i];
             Block prev_block = _chain[i - 1];
+
+            //std::cout << "IS VALID METHOD: \n";
+            //std::cout << curr_block.get_hash() << '\n' << curr_block.calculate_hash() << '\n';
+            //std::cout << "END OF IS VALID METHOD\n";
 
             if(curr_block.get_hash() != curr_block.calculate_hash())
                 return false;

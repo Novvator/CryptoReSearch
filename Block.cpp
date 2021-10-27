@@ -14,7 +14,7 @@ namespace CryptoReSearch{
             _hash = calculate_hash();
     }
 
-    std::string Block::get_hash() const{
+    std::string& Block::get_hash() {
         return _hash;
     }
 
@@ -25,7 +25,7 @@ namespace CryptoReSearch{
     std::string Block::calculate_hash(){
 
         std::stringstream output;
-        
+
         time_t now_tt;
 
         {
@@ -33,9 +33,21 @@ namespace CryptoReSearch{
             now_tt = system_clock::to_time_t(_date);
         }
 
-        output << _index << ' ' << _data << ' ' << ctime(&now_tt) << ' ' << _previous_hash;
+        output << _index << _data << now_tt << _previous_hash;
 
         return sha256(output.str());
+    }
+    
+    std::string Block::get_date() const{
+
+        time_t now_tt;
+
+        {
+            using namespace std::chrono;
+            now_tt = system_clock::to_time_t(_date);
+        }
+
+        return ctime(&now_tt);
     }
 
 
