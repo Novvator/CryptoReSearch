@@ -28,7 +28,7 @@ namespace CryptoReSearch{
             Block curr_block = _chain[i];
             Block prev_block = _chain[i - 1];
 
-            if(curr_block.get_hash() != prev_block.calculate_hash())
+            if(curr_block.get_hash() != curr_block.calculate_hash())
                 return false;
 
             if(curr_block.get_previous_hash() != prev_block.get_hash())
@@ -36,6 +36,10 @@ namespace CryptoReSearch{
         }
 
         return true;
+    }
+
+    std::vector<Block> Blockchain::get_chain() const{
+        return _chain;
     }
 
 }

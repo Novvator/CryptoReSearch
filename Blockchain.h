@@ -18,6 +18,8 @@ namespace CryptoReSearch{
         Block get_latest_block();
         void add_block(Block);
         bool is_valid();
+
+        std::vector<Block> get_chain() const;
     };
 }
 #endif //_BLOCKCHAIN_GUARD
