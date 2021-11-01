@@ -9,7 +9,7 @@ namespace CryptoReSearch{
     }
 
     Block Blockchain::create_genesis_block(){
-        return Block(0, "Genesis Block", std::chrono::system_clock::now(),"0");
+        return Block(0, "Genesis Block", std::chrono::system_clock::now(),0,"0");
     }
 
     Block Blockchain::get_latest_block(){

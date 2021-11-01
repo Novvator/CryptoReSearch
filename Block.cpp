@@ -3,26 +3,34 @@
 
 #include <sstream>
 
-namespace CryptoReSearch{
+namespace CryptoReSearch
+{
 
-    Block::Block(uint64_t index, std::string data, std::chrono::system_clock::time_point date, std::string previous_hash){
+    Block::Block(uint64_t player_id, std::string data, std::chrono::system_clock::time_point date,
+                 std::string hash, uint64_t nonce,
+                 std::string previous_hash)
+    {
 
-            _index = index;
-            _data = data;
-            _date = date;
-            _previous_hash = previous_hash;
-            _hash = calculate_hash();
+        _player_id = player_id;
+        _data = data;
+        _date = date;
+        _previous_hash = previous_hash;
+        _nonce = nonce;
+        _hash = hash;
     }
 
-    std::string& Block::get_hash() {
+    std::string &Block::get_hash()
+    {
         return _hash;
     }
 
-    std::string& Block::get_previous_hash(){
+    std::string &Block::get_previous_hash()
+    {
         return _previous_hash;
     }
 
-    std::string Block::calculate_hash(){
+    std::string Block::calculate_hash()
+    {
 
         std::stringstream output;
 
@@ -33,12 +41,13 @@ namespace CryptoReSearch{
             now_tt = system_clock::to_time_t(_date);
         }
 
-        output << _index << _data << now_tt << _previous_hash;
+        output << _player_id << _data << now_tt << _previous_hash << _nonce;
 
         return sha256(output.str());
     }
-    
-    std::string Block::get_date() const{
+
+    std::string Block::get_date() const
+    {
 
         time_t now_tt;
 
@@ -49,6 +58,5 @@ namespace CryptoReSearch{
 
         return ctime(&now_tt);
     }
-
 
 }
