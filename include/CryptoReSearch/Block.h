@@ -5,14 +5,13 @@
 
 #include <cstdint>
 #include <chrono>
-
-#include "sha256.h"
+#include <string>
 
 namespace CryptoReSearch{
 
     class Block{
         
-        uint64_t                                _player_id;           // Chain position
+        uint64_t                                _player_id;       // Chain position
         std::string                             _data;            // Data in the current block
         std::chrono::system_clock::time_point   _date;            // The date that the block was created
         std::string                             _hash;            // This block's hash

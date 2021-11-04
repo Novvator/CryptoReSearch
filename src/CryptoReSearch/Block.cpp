@@ -1,7 +1,8 @@
 
-#include "Block.h"
-
 #include <sstream>
+
+#include "CryptoReSearch/Block.h"
+#include "sha256/sha256.h"
 
 namespace CryptoReSearch
 {
@@ -41,7 +42,7 @@ namespace CryptoReSearch
         }
 
         output << _player_id << _data << now_tt << _previous_hash << _nonce;
-
+        
         return sha256(output.str());
     }
 

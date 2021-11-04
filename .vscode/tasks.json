@@ -7,10 +7,12 @@
 			"command": "g++.exe",
 			"args": [
 				"-g",
+				"-std=c++20",
 				"-I${workspaceFolder}\\include\\",
 				"-L${workspaceFolder}\\glfw-3.3.5\\lib-mingw-w64\\",
 				"${fileDirname}\\*.cpp",
-				"${workspaceFolder}\\src\\*\\*.cpp",
+				"${workspaceFolder}\\src\\CryptoReSearch\\*.cpp",
+				"${workspaceFolder}\\src\\sha256\\*.cpp",
 				"${workspaceFolder}\\src\\glad\\glad.c",
 				//"-lglfw3dll",
 				"-o",

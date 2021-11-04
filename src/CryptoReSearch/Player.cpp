@@ -1,10 +1,10 @@
 
-#include "Player.h"
-#include "sha256.h"
-#include "Block.h"
+#include "CryptoReSearch/Player.h"
 
 #include <sstream>
 #include <chrono>
+
+#include "sha256/sha256.h"
 
 namespace CryptoReSearch{
 
@@ -42,14 +42,14 @@ namespace CryptoReSearch{
             
             if(new_hash.substr(0, difficulty) == zeroes.str())
             {
-                return Block{_player_id, "", date, _nonce, previous_hash};
+                return Block{_player_id, "", date, new_hash, _nonce, previous_hash};
             }
 
             ++_nonce;
         
         }
 
-        return Block{0, "", std::chrono::system_clock::now(), 0, ""};
+        return Block{0, "", std::chrono::system_clock::now(), "", 0, ""};
 
 
 
