@@ -7,8 +7,7 @@ namespace CryptoReSearch
 {
 
     Block::Block(uint64_t player_id, std::string data, std::chrono::system_clock::time_point date,
-                 std::string hash, uint64_t nonce,
-                 std::string previous_hash)
+                 std::string hash, uint64_t nonce, std::string previous_hash)
     {
 
         _player_id = player_id;

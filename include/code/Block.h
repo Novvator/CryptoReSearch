@@ -20,8 +20,8 @@ namespace CryptoReSearch{
         uint64_t                                _nonce;           // Nonce value
 
     public:
-        Block(uint64_t index, std::string data, std::chrono::system_clock::time_point date, uint64_t nonce, 
-        std::string previous_hash = "");
+        Block(uint64_t player_id, std::string data, std::chrono::system_clock::time_point date,
+              std::string hash, uint64_t nonce, std::string previous_hash = "");
 
         std::string calculate_hash();
         std::string& get_previous_hash();
