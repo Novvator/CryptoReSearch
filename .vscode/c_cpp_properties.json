@@ -3,7 +3,7 @@
         {
             "name": "GCC",
             "includePath": [
-                "${workspaceFolder}\\include\\**"
+                "${workspaceFolder}\\include\\"
             ],
             "defines": [
                 "_DEBUG",
