@@ -14,7 +14,7 @@
 				"${workspaceFolder}\\src\\CryptoReSearch\\*.cpp",
 				"${workspaceFolder}\\src\\sha256\\*.cpp",
 				"${workspaceFolder}\\src\\glad\\glad.c",
-				//"-lglfw3dll",
+				"-lglfw3dll",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe",
 			],
