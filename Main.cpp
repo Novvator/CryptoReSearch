@@ -2,6 +2,9 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include "CryptoReSearch/Blockchain.h"
+#include "CryptoReSearch/Block.h"
+#include "CryptoReSearch/Player.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -10,6 +13,7 @@ void processInput(GLFWwindow *window);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
+/*
 int main()
 {
     // glfw: initialize and configure
@@ -83,4 +87,21 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
+}
+
+*/
+
+int main() 
+{
+    CryptoReSearch::Blockchain chain{};
+    CryptoReSearch::Player p1{1};
+    auto block1 = p1.try_to_mine_block(chain.get_latest_block().get_hash(), 2);
+    if(block1.get_hash() != "")
+    {
+        chain.add_block(block1);
+    }
+    else std::cout << "didnt add block" << '\n';
+
+    std::cout << chain.is_valid();
+
 }
